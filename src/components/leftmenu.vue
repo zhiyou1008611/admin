@@ -87,7 +87,7 @@ export default {
 
   props: ["curPage"],
   mounted() {
-    console.log(this.$route);
+    // console.log(this.$route);
     this.listIndex = this.$route.name;
     this.role = this.$refs.role.value;
     if (this.role == 2) {
@@ -104,7 +104,16 @@ export default {
       console.log(key, keyPath);
     },
     handleSelect(key, keyPath) {
-      this.$router.push({ path: "/home/" + key });
+      if (key == "videoList") {
+        this.$router.push({
+          path: "/home/" + key,
+          query: {
+            flag: 0
+          }
+        });
+      } else {
+        this.$router.push({ path: "/home/" + key });
+      }
       console.log(key, keyPath);
     },
     userInfo() {

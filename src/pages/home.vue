@@ -9,6 +9,17 @@
         <leftmenu></leftmenu>
       </aside>
       <router-view />
+
+      <div class="content" v-cloak v-if="show">
+        <p><span>login</span>: <em>登录</em></p>
+        <p><span>home/statistics</span>: <em>首页统计</em></p>
+        <p><span>home/userInfo</span>: <em>用户信息</em></p>
+        <p><span>home/videoList</span>: <em>视频列表</em></p>
+        <p><span>home/inStationManage</span>: <em>站内管理</em></p>
+        <p><span>home/delvideoList</span>: <em>已删除视频</em></p>
+        <p><span>home/addvideo</span>: <em>上传视频</em></p>
+        <p><span>home/addup</span>: <em>添加Up主</em></p>
+      </div>
     </main>
   </div>
 </template>
@@ -23,8 +34,15 @@ export default {
   components: { headers, leftmenu },
   data: function() {
     return {
-      curPage: 0
+      curPage: 0,
+      show: false
     };
+  },
+  mounted() {
+    console.log(this.$route.name);
+    if (this.$route.name == "home") {
+      this.show = true;
+    }
   },
   methods: {
     navitemclick(index) {

@@ -2,7 +2,7 @@
   <div class="content" v-cloak>
     <el-row
       :gutter="30"
-      style="background:rgb(14, 129, 196); color: #fff; height: 52px; padding:10px 0px; margin-bottom: 10px;"
+      style="background:rgb(14, 129, 196); color: #fff; height: 52px; padding:10px 0px;"
     ></el-row>
     <el-form
       :model="ruleForm"
@@ -360,7 +360,7 @@ export default {
   box-shadow: 0 0 6px #eee;
   background: #fff;
   padding: 100px 15px 0px;
-  margin-top: 10px;
+  margin-top: 15px;
   box-sizing: border-box;
 }
 

@@ -4,9 +4,19 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
+
+npm install tinymce -S
+npm install @tinymce/tinymce-vue -S
+npm install vue-quill-editor –save
+
+npm i element-ui -S
+npm install vuex
+npm install axios
+
+npm install vue-happy-scroll --save-dev
 
 # serve with hot reload at localhost:8080
 npm run dev

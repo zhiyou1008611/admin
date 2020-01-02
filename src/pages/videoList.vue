@@ -1,10 +1,6 @@
 <template>
   <div class="content" v-cloak>
     <input type="hidden" ref="role" th:value="${session.adminInfo.role}" />
-    <input type="hidden" ref="userId" th:value="${userId}" />
-    <input type="hidden" ref="accountName" th:value="${accountName}" />
-    <input type="hidden" ref="params" th:value="${params}" />
-    <input type="hidden" ref="flag" th:value="${flag}" />
     <input type="hidden" ref="adminId" th:value="${session.adminInfo.adminId}" />
     <input
       type="hidden"
@@ -434,7 +430,8 @@ export default {
       playVideo: false, //视频播放框
       role: false,
       adminId: 0, //当前用户ID
-      params: "", //首页穿的参数
+      accountName: "", //首页穿的参数
+      userLabel: "", //首页穿的参数
       flags: 0,
       userId: 0,
       active: 1,
@@ -513,42 +510,43 @@ export default {
   // },
   mounted() {
     this.loading = true;
+    console.log(this.$route.query.flag);
     // this.UPList();
     // this.tagsList();
     if (this.$refs.role.value == 1) {
       this.role = true;
     }
-    this.flags = this.$refs.flag.value;
     this.adminId = this.$refs.adminId.value; //此用户ID
-    this.userId = this.$refs.userId.value; //查询用户ID
-    this.params = this.$refs.params.value; //查询用户传参
+    this.flags = this.$route.query.flag;
+    this.userId = this.$route.query.userId; //查询用户ID
+    this.accountName = this.$route.query.accountName; //查询用户传参
+    this.userLabel = this.$route.query.userLabel; //查询用户传参
     if (this.flags == 2) {
       //新增视频参数
       this.time[0] = this.$refs.loginTime.value;
       this.time[1] = this.$refs.lastTime.value;
-      if (this.$refs.userId.value != "") {
-        this.checkboxGroupUp.push(this.params);
+      if (this.userId != "") {
+        this.checkboxGroupUp.push(this.accountName);
       }
     } else if (this.flags == 3) {
       //未读视频参数
       this.read = false;
-      if (this.$refs.userId.value != "") {
-        this.checkboxGroupUp.push(this.params);
+      if (this.userId != "") {
+        this.checkboxGroupUp.push(this.accountName);
       }
-    } else if (this.flags == 0) {
-      //全部视频参数
-    } else if (this.flags == 99) {
+    } else if (this.$route.name == "delvideoList") {
       //已删除视频参数
+      this.flags = 99;
       this.active = 0;
     } else if (this.flags == 4) {
       //新增UP主视频参数
-      this.checkboxGroupUp.push(this.params);
+      this.checkboxGroupUp.push(this.accountName);
     } else if (this.flags == 5) {
-      this.checkboxGroupUp.push(this.params);
+      this.checkboxGroupUp.push(this.accountName);
     } else if (this.flags == 6) {
       //标签查询
-      this.checkboxGroupTag = this.params.split(/,|，/);
-      this.checkboxGroupUp.push(this.$refs.accountName.value);
+      this.checkboxGroupTag = this.userLabel.split(/,|，/);
+      this.checkboxGroupUp.push(this.accountName);
     }
     setTimeout(() => {
       // this.getSelectDataList();

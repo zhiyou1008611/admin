@@ -1,10 +1,7 @@
 <template>
   <div class="content" v-cloak>
-    <el-row
-      :gutter="30"
-      style="background:rgb(14, 129, 196); color: #fff; padding:10px 0px; margin-bottom: 10px;"
-    >
-      <el-col :span="3" :offset="21" style="text-align: right;">
+    <el-row :gutter="30" style="background:rgb(14, 129, 196); color: #fff; padding:10px 0px;">
+      <el-col :span="3" :offset="21" style="text-align: right; margin-bottom: 0px;">
         <el-button
           type="primary"
           size="small"

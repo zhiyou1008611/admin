@@ -63,7 +63,7 @@ const router = new Router({
       name: 'inStationManage',
       component: inStationManage,
       meta: {
-        title: '首页',
+        title: '站内管理',
         requiresAuth: true
       },
     }, {
